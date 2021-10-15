@@ -17,18 +17,9 @@
 #define ul unsigned long
 #define ll long long
 
-// int prime_check(ul number);
-void create_prime_store(int number);
-
-int prime_prove(ul number);
-int prime_check(ul number);
-int fermat_check(ul number);
-ul extend_gcd(ul a,ul b,ul* x,ul* y);
-int number_to_array(ul number,int* array,int radix,int reverse);
-
-int number_length_get(ul number);
-ul rsa_encrypt(ul m,ul e,ul n);
-ul rsa_encrypt(ul c,ul d,ul n);
-
-ul bignumber_sum(ul* array_c,ul* array_M,ul* array_M_reverse,ul p);
+ul extend_gcd(ul a,ul b,ul* x,ul* y); // 扩展欧几里得测试
+ul mul_reverse_get(ul e,ul phi); // 获取乘法逆元
+ul modal_power_calculation(ul a,ul b,ul c); // a^(b) mod c
+ul quick_mul(ul a,ul b,ul c); // (a*b)%c
+int number_to_array(ul number,int* array,int radix,int reverse); // 整数转数组
 #endif /* rsa_public_h */
