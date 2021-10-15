@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D5FC85B2719944600FD5916 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FC85A2719944600FD5916 /* main.c */; };
+		9D5FC8622719961200FD5916 /* rsa_assignment.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FC8612719961200FD5916 /* rsa_assignment.c */; };
+		9D5FC865271996EE00FD5916 /* rsa_public.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FC864271996EE00FD5916 /* rsa_public.c */; };
+		9D5FC868271996FF00FD5916 /* rsa_basic.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FC867271996FF00FD5916 /* rsa_basic.c */; };
+		9D5FC86B2719971100FD5916 /* rsa_attack.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FC86A2719971100FD5916 /* rsa_attack.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +27,13 @@
 
 /* Begin PBXFileReference section */
 		9D5FC8572719944600FD5916 /* rsa_assignment */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = rsa_assignment; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D5FC85A2719944600FD5916 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		9D5FC8612719961200FD5916 /* rsa_assignment.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = rsa_assignment.c; sourceTree = "<group>"; };
+		9D5FC863271996EE00FD5916 /* rsa_public.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rsa_public.h; sourceTree = "<group>"; };
+		9D5FC864271996EE00FD5916 /* rsa_public.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = rsa_public.c; sourceTree = "<group>"; };
+		9D5FC866271996FF00FD5916 /* rsa_basic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rsa_basic.h; sourceTree = "<group>"; };
+		9D5FC867271996FF00FD5916 /* rsa_basic.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = rsa_basic.c; sourceTree = "<group>"; };
+		9D5FC8692719971100FD5916 /* rsa_attack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rsa_attack.h; sourceTree = "<group>"; };
+		9D5FC86A2719971100FD5916 /* rsa_attack.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = rsa_attack.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +66,13 @@
 		9D5FC8592719944600FD5916 /* rsa_assignment */ = {
 			isa = PBXGroup;
 			children = (
-				9D5FC85A2719944600FD5916 /* main.c */,
+				9D5FC8612719961200FD5916 /* rsa_assignment.c */,
+				9D5FC863271996EE00FD5916 /* rsa_public.h */,
+				9D5FC864271996EE00FD5916 /* rsa_public.c */,
+				9D5FC866271996FF00FD5916 /* rsa_basic.h */,
+				9D5FC867271996FF00FD5916 /* rsa_basic.c */,
+				9D5FC8692719971100FD5916 /* rsa_attack.h */,
+				9D5FC86A2719971100FD5916 /* rsa_attack.c */,
 			);
 			path = rsa_assignment;
 			sourceTree = "<group>";
@@ -119,7 +134,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D5FC85B2719944600FD5916 /* main.c in Sources */,
+				9D5FC8622719961200FD5916 /* rsa_assignment.c in Sources */,
+				9D5FC865271996EE00FD5916 /* rsa_public.c in Sources */,
+				9D5FC86B2719971100FD5916 /* rsa_attack.c in Sources */,
+				9D5FC868271996FF00FD5916 /* rsa_basic.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
