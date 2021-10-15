@@ -18,7 +18,6 @@ int is_prime(ul number){
 
 // 创建指定素数库 测试成功
 int create_prime_store(ul number,int* array){
-//    int prime_store[10000] = {0}; // todo:存在风险
     int j = 0;
     for(int i = 2;i <= number;){
         if(is_prime(i)){

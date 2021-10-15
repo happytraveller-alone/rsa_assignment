@@ -21,6 +21,7 @@ int main(void){
 //    modal_power_calculation and number_to_array and quick_mul test succeed
 //    create_prime_store(10000); // create_prime_store test succeed
     rsa_encrypt_and_decrypt();
+    rsa_attack();
     return 0;
     
 }
