@@ -1,9 +1,10 @@
-//
-//  rsa_public.h
-//  rsa_assignment
-//
-//  Created by xieyuanfeng on 2021/10/15.
-//
+/*
+ * 文件名：rsa_public.h
+ * 作者：谢远峰
+ * 描述：公共程序宏定义，函数声明
+ * 最近修改时间：2021/10/14
+ * 修改内容：完成公共函数的书写和测试
+ */
 
 #ifndef rsa_public_h
 #define rsa_public_h

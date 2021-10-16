@@ -1,9 +1,10 @@
-//
-//  rsa_public.c
-//  rsa_assignment
-//
-//  Created by xieyuanfeng on 2021/10/15.
-//
+/*
+ * 文件名：rsa_public.c
+ * 作者：谢远峰
+ * 描述：公共程序定义，包括扩展欧几里得算法，乘法逆元获取，模幂计算，数字转数组，快速乘
+ * 最近修改时间：2021/10/16
+ * 修改内容：完成公共函数的书写和测试
+ */
 
 #include "rsa_public.h"
 
