@@ -28,30 +28,42 @@ int create_prime_store(ul number,int* array){
 }
 
 // 判定结果输出
-void prime_test_out(ul number_p,ul number_q){
-    switch(prime_test(number_p, number_q)){
+int prime_test_out(ul number_p,ul number_q){
+    switch(prime_test(number_p, number_q,0,0)){
         case 0:
             printf("both p and q are not prime!!!\n");
-            break;
+            return 0;
+//            break;
         case 1:
             printf("p is not prime!!!\n");
-            break;
+            return 0;
         case 2:
             printf("q is not prime!!!\n");
-            break;
+            return 0;
         case 3:
             printf("prime check succeed!!!\n");
-            break;
+            return 1;
+        case 4:
+            printf("q is too short!!!\n");
+            return 0;
+        case 8:
+            printf("p is too short!!!\n");
+            return 0;
+        case 12:
+            printf("p and q are too short\n");
+            return 0;
         default:
             printf("unkonw error?!\n");
-            break;
+            return 0;
     }
-    return;
+    return -1;
 }
 
 // 对于指定数进行费马定理测试和遍历素数测试
-int prime_test(ul number_p,ul number_q){
-    int p_check = 0, q_check = 0;
+int prime_test(ul number_p,ul number_q,int p_check,int q_check){
+    p_check = (number_length_get(number_p, 0) <= 2)? 2:0;
+    q_check = (number_length_get(number_q, 0) <= 2)? 2:0;
+    if(((p_check << 2) | (q_check << 1) ) > 0) return ((p_check << 2) | (q_check << 1));
     p_check=(fermat_check(number_p) & prime_check(number_p))? 1:0;
     q_check=(fermat_check(number_q) & prime_check(number_q))? 1:0;
     return(p_check << 1 | q_check);
@@ -92,15 +104,27 @@ ul rsa_encrypt(ul m,ul e,ul n){return (modal_power_calculation(m, e, n));}
 ul rsa_decrypt(ul c,ul d,ul n){return (modal_power_calculation(c, d, n));}
 
 void test1(ul p,ul q,ul e,ul m){
-    printf("Please input four factor(format:p,q,e,m):");
-    scanf("%lu,%lu,%lu,%lu",&p,&q,&e,&m);
-    printf("p:%lu,q:%lu,e:%lu,m:%lu\n",p,q,e,m);
-    prime_test_out(p,q);
     ul n = p * q;
     ul fai = (p-1) * (q-1);
-    printf("n:%lu \n",n);
-    printf("f:%lu \n",fai);
-    (e_check(e,n))? printf("e check succeed!!!\n"):printf("e check failed!!!\n");
+    for(int input_check = 0;input_check == 0;){
+        printf("Please input four factor(format:p,q,e,m):");
+        scanf("%lu,%lu,%lu,%lu",&p,&q,&e,&m);
+        printf("p:%lu,q:%lu,e:%lu,m:%lu\n",p,q,e,m);
+        if(prime_test_out(p,q) == 0){
+            printf("prime test failed, try again!\n");
+            continue;
+        }
+        printf("n:%lu \n",n);
+        printf("f:%lu \n",fai);
+        if(e_check(e,n) == 0){
+            printf("e check failed!!!\n");
+            printf("e test failed, try again!\n");
+            continue;
+        }
+        else{printf("e check succeed!!!\n");}
+        input_check = 1;
+    }
+    
     ul d = mul_reverse_get(e, fai);
     printf("d:%lu\n",d);
     printf("message to encrypt:%lu\n",m);
@@ -113,15 +137,24 @@ void test1(ul p,ul q,ul e,ul m){
 }
 
 void test2(ul p,ul q,ul d,ul c){
-    printf("Please input four factor(format:p,q,d,c):");
-    scanf("%lu,%lu,%lu,%lu",&p,&q,&d,&c);
-    printf("p:%lu,q:%lu,d:%lu,c:%lu\n",p,q,d,c);
-    prime_test_out(p,q);
     ul n = p * q;
     ul fai = (p-1) * (q-1);
-    printf("n:%lu \n",n);
-    printf("f:%lu \n",fai);
-    d_check(d, fai)? printf("d check succeed"):printf("d check failed");
+    for(int input_check = 0;input_check == 0;){
+        printf("Please input four factor(format:p,q,d,c):\n");
+        scanf("%lu,%lu,%lu,%lu",&p,&q,&d,&c);
+        printf("p:%lu,q:%lu,d:%lu,c:%lu\n",p,q,d,c);
+        if(prime_test_out(p,q) == 0){
+            printf("prime test failed, try again!\n");
+            continue;
+        }
+        printf("n:%lu \n",n);
+        printf("f:%lu \n",fai);
+        if(d_check(d, fai)==0){
+            printf("d check failed, try again!\n");
+        }
+        else{printf("d check succeed\n");}
+    }
+    
     ul out = rsa_decrypt(c, d, n);
     printf("message decrypted:%lu\n",out);
     return;
@@ -132,9 +165,9 @@ void rsa_encrypt_and_decrypt(void){
     ul p = 0,q = 0;
     ul e = 0,m = 0;
     ul d = 0,c = 0;
-
+    
     // 2357,2551,3674911,5234673 \ 103,193,7,19000
-    test1(p,q,e,m); 
+    test1(p,q,e,m);
     // 885320963,238855417,116402471153538991,113535859035722866
     test2(p,q,d,c);
     return;

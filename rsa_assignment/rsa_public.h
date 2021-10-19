@@ -23,4 +23,5 @@ ul mul_reverse_get(ul e,ul phi); // 获取乘法逆元
 ul modal_power_calculation(ul a,ul b,ul c); // a^(b) mod c
 ul quick_mul(ul a,ul b,ul c); // (a*b)%c
 int number_to_array(ul number,int* array,int radix,int reverse); // 整数转数组
+int number_length_get(ul number,int length);
 #endif /* rsa_public_h */

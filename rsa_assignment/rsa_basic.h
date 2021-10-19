@@ -12,7 +12,7 @@
 #include "rsa_public.h"
 
 int create_prime_store(ul number,int* array); // 创建指定素数库
-int prime_test(ul number_p,ul number_q); // 对于指定数进行费马定理测试和遍历素数测试
+int prime_test(ul number_p,ul number_q,int p_check,int q_check); // 对于指定数进行费马定理测试和遍历素数测试
 int prime_check(ul number); // 传统的素数判定
 int fermat_check(ul number); // 斐马素性测试
 int e_check(ul e,ul n); // e的参数检查

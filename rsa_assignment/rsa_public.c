@@ -79,3 +79,11 @@ ul quick_mul(ul a,ul b,ul c){
     }
     return res;
 }
+
+int number_length_get(ul number,int length){
+    while(number!=0){
+        number /= 10;
+        length++;
+    }
+    return length;
+}

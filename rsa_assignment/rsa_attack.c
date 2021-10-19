@@ -38,6 +38,7 @@ void rsa_attack(void){
     M1_ = mul_reverse_get(M1, n1);
     M2_ = mul_reverse_get(M2, n2);
     M3_ = mul_reverse_get(M3, n3);
+    printf("M1_:%lu,M2_:%lu,M3_:%lu\n",M1_,M2_,M3_);
     ul array_c[3] = {c1,c2,c3};
     ul array_M[3] = {M1,M2,M3};
     ul array_M_reverse[3] = {M1_,M2_,M3_};
