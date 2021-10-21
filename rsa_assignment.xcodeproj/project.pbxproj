@@ -11,10 +11,21 @@
 		9D5FC865271996EE00FD5916 /* rsa_public.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FC864271996EE00FD5916 /* rsa_public.c */; };
 		9D5FC868271996FF00FD5916 /* rsa_basic.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FC867271996FF00FD5916 /* rsa_basic.c */; };
 		9D5FC86B2719971100FD5916 /* rsa_attack.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FC86A2719971100FD5916 /* rsa_attack.c */; };
+		9DE0EC792721190900FB8438 /* strong_prime.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0EC782721190900FB8438 /* strong_prime.c */; };
+		9DE0EC7B2721192F00FB8438 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0EC7A2721192F00FB8438 /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9D5FC8552719944600FD5916 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		9DE0EC6B27210D4F00FB8438 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -34,10 +45,21 @@
 		9D5FC867271996FF00FD5916 /* rsa_basic.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = rsa_basic.c; sourceTree = "<group>"; };
 		9D5FC8692719971100FD5916 /* rsa_attack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rsa_attack.h; sourceTree = "<group>"; };
 		9D5FC86A2719971100FD5916 /* rsa_attack.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = rsa_attack.c; sourceTree = "<group>"; };
+		9DE0EC6D27210D4F00FB8438 /* Strong_Prime */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Strong_Prime; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DE0EC772721190900FB8438 /* strong_prime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = strong_prime.h; sourceTree = "<group>"; };
+		9DE0EC782721190900FB8438 /* strong_prime.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = strong_prime.c; sourceTree = "<group>"; };
+		9DE0EC7A2721192F00FB8438 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		9D5FC8542719944600FD5916 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DE0EC6A27210D4F00FB8438 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -51,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5FC8592719944600FD5916 /* rsa_assignment */,
+				9DE0EC6E27210D4F00FB8438 /* Strong_Prime */,
 				9D5FC8582719944600FD5916 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				9D5FC8572719944600FD5916 /* rsa_assignment */,
+				9DE0EC6D27210D4F00FB8438 /* Strong_Prime */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +99,16 @@
 				9D5FC86A2719971100FD5916 /* rsa_attack.c */,
 			);
 			path = rsa_assignment;
+			sourceTree = "<group>";
+		};
+		9DE0EC6E27210D4F00FB8438 /* Strong_Prime */ = {
+			isa = PBXGroup;
+			children = (
+				9DE0EC772721190900FB8438 /* strong_prime.h */,
+				9DE0EC782721190900FB8438 /* strong_prime.c */,
+				9DE0EC7A2721192F00FB8438 /* main.c */,
+			);
+			path = Strong_Prime;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,6 +131,23 @@
 			productReference = 9D5FC8572719944600FD5916 /* rsa_assignment */;
 			productType = "com.apple.product-type.tool";
 		};
+		9DE0EC6C27210D4F00FB8438 /* Strong_Prime */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DE0EC7127210D4F00FB8438 /* Build configuration list for PBXNativeTarget "Strong_Prime" */;
+			buildPhases = (
+				9DE0EC6927210D4F00FB8438 /* Sources */,
+				9DE0EC6A27210D4F00FB8438 /* Frameworks */,
+				9DE0EC6B27210D4F00FB8438 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Strong_Prime;
+			productName = Strong_Prime;
+			productReference = 9DE0EC6D27210D4F00FB8438 /* Strong_Prime */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -107,6 +158,9 @@
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					9D5FC8562719944600FD5916 = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					9DE0EC6C27210D4F00FB8438 = {
 						CreatedOnToolsVersion = 13.0;
 					};
 				};
@@ -125,6 +179,7 @@
 			projectRoot = "";
 			targets = (
 				9D5FC8562719944600FD5916 /* rsa_assignment */,
+				9DE0EC6C27210D4F00FB8438 /* Strong_Prime */,
 			);
 		};
 /* End PBXProject section */
@@ -138,6 +193,15 @@
 				9D5FC865271996EE00FD5916 /* rsa_public.c in Sources */,
 				9D5FC86B2719971100FD5916 /* rsa_attack.c in Sources */,
 				9D5FC868271996FF00FD5916 /* rsa_basic.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DE0EC6927210D4F00FB8438 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DE0EC7B2721192F00FB8438 /* main.c in Sources */,
+				9DE0EC792721190900FB8438 /* strong_prime.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +247,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -241,7 +305,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -271,6 +335,26 @@
 			};
 			name = Release;
 		};
+		9DE0EC7227210D4F00FB8438 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UYML8S8P6Q;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9DE0EC7327210D4F00FB8438 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UYML8S8P6Q;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -288,6 +372,15 @@
 			buildConfigurations = (
 				9D5FC85F2719944600FD5916 /* Debug */,
 				9D5FC8602719944600FD5916 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DE0EC7127210D4F00FB8438 /* Build configuration list for PBXNativeTarget "Strong_Prime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DE0EC7227210D4F00FB8438 /* Debug */,
+				9DE0EC7327210D4F00FB8438 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

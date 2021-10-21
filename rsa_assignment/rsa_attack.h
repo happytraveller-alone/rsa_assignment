@@ -13,5 +13,6 @@
 
 ul bignumber_sum(ul* array_c,ul* array_M,ul* array_M_reverse,ul p); // 大数相加
 ul multi_number_mul(ul c,ul M,ul M_reverse,ul p); // 大数相乘
+int validation(ul* array_n);
 void rsa_attack(void); // 算法2
 #endif /* rsa_attack_h */

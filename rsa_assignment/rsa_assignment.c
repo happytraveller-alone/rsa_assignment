@@ -17,6 +17,6 @@ int main(void){
     rsa_encrypt_and_decrypt();
     // rsa小加密指数攻击
     // 3,763813,828083,720761,352596,408368,6728
-//    rsa_attack();
+    rsa_attack();
     return 0;
 }

@@ -4,10 +4,37 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Strong_Prime.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>rsa_assignment.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>9D5FC8562719944600FD5916</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9DE0EC6127210B6600FB8438</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9DE0EC6C27210D4F00FB8438</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

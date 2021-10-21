@@ -33,7 +33,7 @@ int prime_test_out(ul number_p,ul number_q){
         case 0:
             printf("both p and q are not prime!!!\n");
             return 0;
-//            break;
+
         case 1:
             printf("p is not prime!!!\n");
             return 0;
@@ -104,8 +104,8 @@ ul rsa_encrypt(ul m,ul e,ul n){return (modal_power_calculation(m, e, n));}
 ul rsa_decrypt(ul c,ul d,ul n){return (modal_power_calculation(c, d, n));}
 
 void test1(ul p,ul q,ul e,ul m){
-    ul n = p * q;
-    ul fai = (p-1) * (q-1);
+    ul n = 0;
+    ul fai = 0;
     for(int input_check = 0;input_check == 0;){
         printf("Please input four factor(format:p,q,e,m):");
         scanf("%lu,%lu,%lu,%lu",&p,&q,&e,&m);
@@ -114,6 +114,8 @@ void test1(ul p,ul q,ul e,ul m){
             printf("prime test failed, try again!\n");
             continue;
         }
+        n = p * q;
+        fai = (p-1) * (q-1);
         printf("n:%lu \n",n);
         printf("f:%lu \n",fai);
         if(e_check(e,n) == 0){
@@ -137,8 +139,8 @@ void test1(ul p,ul q,ul e,ul m){
 }
 
 void test2(ul p,ul q,ul d,ul c){
-    ul n = p * q;
-    ul fai = (p-1) * (q-1);
+    ul n = 0;
+    ul fai = 0;
     for(int input_check = 0;input_check == 0;){
         printf("Please input four factor(format:p,q,d,c):\n");
         scanf("%lu,%lu,%lu,%lu",&p,&q,&d,&c);
@@ -147,12 +149,14 @@ void test2(ul p,ul q,ul d,ul c){
             printf("prime test failed, try again!\n");
             continue;
         }
+        n = (p) * (q);
+        fai = (p-1) * (q-1);
         printf("n:%lu \n",n);
         printf("f:%lu \n",fai);
         if(d_check(d, fai)==0){
             printf("d check failed, try again!\n");
         }
-        else{printf("d check succeed\n");}
+        else{printf("d check succeed\n");input_check = 1;}
     }
     
     ul out = rsa_decrypt(c, d, n);
