@@ -17,8 +17,9 @@ void input(){
 
 // a^(b) mod c
 ull modal_power_calculation(ull a,ull b,ull c){
-    int array[1000];
-    int size = number_to_array(b, array, 2, 1);
+    int array_size = bit_lenght_get(b,0) + 1;
+    ul* array = (ul*)malloc(array_size * sizeof(ul));
+    int size = number_to_array((ull)b, array, 2, 1);
     ull res = 1;
     for(int i = 0;i < size;i++){
         res = quick_mul(res, res, c);
@@ -28,25 +29,26 @@ ull modal_power_calculation(ull a,ull b,ull c){
 }
 
 // 整数转数组 测试成功
-int number_to_array(ul number,int* array,int radix,int reverse){
-    int i = 0;
+int number_to_array(ull number,ul* array,int radix,int reverse){
+    ul i = 0;
     while(number!=0){
         array[i] = number % radix;
         number /= radix;
         i++;
     }
-    int size = i;
+    ul size = i;
     if(reverse == 1){
-        int temp[1000]; // 二进制数组极限
+        ul* temp = (ul*)malloc((size)*sizeof(ul));
         for(i = 0;i < size;i++){temp[i]=array[i];}
         for(i = 0;i < size;i++){array[size - i - 1]=temp[i];}
+        free(temp);
     }
     return size;
 }
 
 // (a*b)%c 测试成功
-ul quick_mul(ul a,ul b,ul c){
-    ul res=0;//加法初始化
+ull quick_mul(ull a,ull b,ull c){
+    ull res=0;//加法初始化
     while(b){
         if(b & 1) res = (res + a) % c;//模仿二进制
         a = (a << 1) % c;
@@ -80,24 +82,22 @@ Bool Miller_Rabin(ull number,int Security_Parameter){
     return true;
 }
 
-ull Random_Search(int k, int Security_Parameter){
-    ull result = 0;
+ul Random_Search(int k, int Security_Parameter){
+    ul result = 0;
     int cnt = 0;
-    ull temp = 1;
-    ull low_bound = 0;
-    for(cnt = 0;cnt + 1 <= k;cnt++){
-        low_bound += temp;
-        temp *= 2;
-    }
+    ul temp = 1;
+    ull low_bound = (ull)pow(2.0,k-1);
+//    for(cnt = 0;cnt < k;cnt++){low_bound *= 2;}
     while(true){
         temp = 1;
         result = 0;
-        for(cnt = 0;cnt <= k;cnt++){
+        for(cnt = 0;cnt < k;cnt++){
             result += ((rand() % 2) == 1)? temp:0;
             temp *= 2;
         }
+        result += low_bound;
         result=(result % 2 == 1)?  result:result - 1;
-        if(result <= low_bound){continue;}
+        if(result >= low_bound * 1.3){continue;}
         if(!prime_check(result, upp_bound)){continue;}
         if(!Miller_Rabin(result, Security_Parameter)){continue;}
         break;
@@ -112,9 +112,9 @@ Bool is_prime(ul number){
 }
 
 // 创建指定素数库 测试成功
-int create_prime_store(ul number,int* array){
-    int j = 0;
-    for(int i = 2;i <= number;i++){
+ul create_prime_store(ul number,ul* array){
+    ul j = 0;
+    for(ul i = 2;i <= number;i++){
         if(is_prime(i)){
             array[j] = i;
             j++;
@@ -125,9 +125,9 @@ int create_prime_store(ul number,int* array){
 }
 
 // 传统的素数判定
-Bool prime_check(ull number,ull upper_bound){
-    int* array = (int*)malloc((upper_bound) * sizeof(int));
-    int size = create_prime_store(upper_bound,array);
+Bool prime_check(ull number,int upper_bound){
+    ul* array = (ul*)malloc((ul)(upper_bound) * (ul)sizeof(int));
+    ul size = create_prime_store(upper_bound,array);
     for(int i = size - 1;i >= 0;i--){
         if(array[i] >= number){continue;}
         else if(number % array[i] == 0){return false;}
@@ -136,14 +136,15 @@ Bool prime_check(ull number,ull upper_bound){
 }
 
 void prime_generate(ull* prime_array,int* bit_length_array,int length){
-    ull s = 0,t = 0,p0 = 0,p = 0,r = 0;
+    ul s = 0,t = 0,r = 0;
+    ull p = 0;
     int half_length = (length % 2 == 1)? ((length + 1)/ 2):length /2;
-    prime_array[0] = s = Random_Search(half_length, 20);
+    prime_array[0] = s = Random_Search(half_length - 1, 20);
     bit_length_array[0] = bit_lenght_get(s, 0);
-    prime_array[1] = t = Random_Search(half_length, 20);
+    prime_array[1] = t = Random_Search(half_length - 1, 20);
     bit_length_array[1] = bit_lenght_get(t, 0);
-    for(int i = 1;;i++){
-        if(prime_check(2*i*t+1,upp_bound)){
+    for(ul i = 1;;i++){
+        if(prime_check((ul)(2*i*t+1),upp_bound)){
             prime_array[2] = r = (ull)2*i*t+1;
             bit_length_array[2] = bit_lenght_get(r, 0);
             printf("i:%d\n",i);
@@ -151,33 +152,36 @@ void prime_generate(ull* prime_array,int* bit_length_array,int length){
         }
     }
     
-    p0 = (modal_power_calculation(s, r-2, r) * 2 * s) - 1;
-    printf("p0:%llu;2*r*s:%llu\n",p0,2*r*s);
-    for(int j = 1;;j++){
-        if(prime_check(p0 +2*j*r*s,upp_bound)){
-            prime_array[3] = p = (ull)2*j*r*s+p0;
+    ull p0 = (modal_power_calculation((ull)s, (ull)(r-2), (ull)r) * 2 * s) - 1;
+//    printf("p0:%llu;2*r*s:%llu\n",p0,(ull)2*r*s);
+//    printf("p0:%d;2*r*s:%d\n",bit_lenght_get(p0, 0),bit_lenght_get(2*r*s, 0));
+    for(ull j = 0;;j++){
+        if(prime_check((p0+(ull)2*j*(ull)r*(ull)s),(ull)upp_bound)){
+            prime_array[3] = p = (ull)(2*j*r*s+p0);
             bit_length_array[3] = bit_lenght_get(p, 0);
-            printf("j:%d\n",j);
+            printf("j:%llu\n",j);
             break;
         }
+//        else{printf("false!!\n");}
     }
     return;
 }
 
 int bit_lenght_get(ull number,int cnt){
     while(number){number /= 2;cnt++;}
-    return (cnt - 1);
+    return (cnt);
 }
 
-// 测试程序
-Bool is_prime_test(ull number){
-    int* array = (int*)malloc((5000) * sizeof(int));
-    int size = create_prime_store(number,array);
-    for(int i = size - 1;i >= 0;i--){
-        if(array[i] >= number){continue;}
-        else if(number % array[i] == 0){return false;}
-    }
-    return true;
-}
+//// 测试程序
+//Bool is_prime_test(ul number){
+//    ul* array = (ul*)malloc((number / 175) * sizeof(int));
+//    ul size = create_prime_store(number,array);
+//    for(int i = size - 1;i >= 0;i--){
+//        if(array[i] >= number){continue;}
+//        else if(number % array[i] == 0){return false;}
+//    }
+//    free(array);
+//    return true;
+//}
 
 
